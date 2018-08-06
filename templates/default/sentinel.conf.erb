@@ -1,0 +1,11 @@
+daemonize yes
+port 26379
+sentinel monitor mymaster <%= @master_ip %> 6379 1
+sentinel down-after-milliseconds mymaster 5000
+sentinel config-epoch mymaster 4
+sentinel leader-epoch mymaster 6
+sentinel known-slave mymaster <%= @slave_ip_a %> 6379
+sentinel known-slave mymaster <%= @slave_ip_b %> 6379
+sentinel known-slave mymaster <%= @slave_ip_c %> 6379
+sentinel failover-timeout mymaster 1000
+sentinel current-epoch 6
