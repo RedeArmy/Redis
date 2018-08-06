@@ -4,7 +4,7 @@
 # Copyright:: 2018, Eder Garcia, Apache 2.0.
 
 #Parameters
-instance = search("aws_opsworks_instance", "hostname:masterhost").first
+instance = search("aws_opsworks_instance", "hostname:RedisMasterInstance").first
 
 node.default[:redis][:master_server] = "#{instance['private_ip']}"
 node.default[:redis][:slave] = "yes"
