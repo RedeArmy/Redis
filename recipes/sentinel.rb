@@ -6,10 +6,10 @@
 # Install redis_sentinel
 package 'redis-sentinel'
 
-master = search("aws_opsworks_instance", "hostname:masterhost").first
-slavea = search("aws_opsworks_instance", "hostname:slave1").first
-slaveb = search("aws_opsworks_instance", "hostname:slave2").first
-slavec = search("aws_opsworks_instance", "hostname:slave3").first
+master = search("aws_opsworks_instance", "hostname:RedisMasterInstance").first
+slavea = search("aws_opsworks_instance", "hostname:RedisSlaveInstance1").first
+slaveb = search("aws_opsworks_instance", "hostname:RedisSlaveInstance2").first
+slavec = search("aws_opsworks_instance", "hostname:RedisSlaveInstance3").first
 
 sentinel_port = 0
 template "#{node[:redis][:conf_dir]}/sentinel.conf" do
